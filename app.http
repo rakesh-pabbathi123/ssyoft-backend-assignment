@@ -1,0 +1,72 @@
+//user registartion
+POST http://localhost:3003/register
+Content-Type: application/json
+
+{
+  "username": "newuser1",
+  "password": "securepassword",
+  "email": "newuser@example.com",
+  "role": "staff"
+}
+
+
+### Login User:
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "securepassword"
+}
+
+### Create Product (requires JWT token):
+POST http://localhost:3003/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXIxIiwicm9sZSI6InN0YWZmIiwiaWF0IjoxNzIzMjc2MTQ2LCJleHAiOjE3MjMyNzk3NDZ9.3qsAPpcXpGJrvNCH7MfahyE5I73wvfa1oVkk0-YbumE
+Content-Type: application/json
+
+{
+  "title": "Product A",
+  "description": "Description for Product A",
+  "inventoryCount": 100
+}
+
+
+
+
+
+
+
+
+### wrong login credentials:
+POST http://localhost:3003/login/
+Content-Type: application/json
+
+{
+  "email": "newuser2@example.com",
+  "password": "securepassword2",
+
+}
+
+
+### correct user login credentials:
+
+POST http://localhost:3003/login/
+Content-Type: application/json
+
+{
+  "email": "newuser2@example.com",
+  "password": "securepassword2"
+}
+
+
+
+//create Product
+POST http://localhost:3003/products/
+Authorization: Bearer <JWT_TOKEN>
+Content-Type: application/json
+
+{
+  "title": "Product A",
+  "description": "Description for Product A",
+  "inventoryCount": 100
+}
